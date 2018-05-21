@@ -1,0 +1,9 @@
+#安装环境
+mongoengine==0.15.0
+pymongo==3.5.1
+aiohttp==3.2.1
+pyyaml==3.12
+aioredis==1.0.0
+aiohttp-session==2.2.0
+
+
