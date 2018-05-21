@@ -3,7 +3,7 @@
 # @Time    : 2018/5/17 下午11:32
 # @Author  : Aries
 # @Site    : 
-# @File    : testauth.py
+# @File    : auth.py
 # @Software: PyCharm
 from httplib.base.webbase import *
 from uuid import uuid4
@@ -46,9 +46,7 @@ class login(webbase):
                     userinfo = await self.request.post()
                     user = userinfo.get('username')
                     password = userinfo.get('password')
-
-            logging.info(user)
-            logging.info(password)
+                    
             if user and token:
                 ret = User.objects.filter(username = user).filter(token = token)
             if user and password:
