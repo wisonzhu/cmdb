@@ -20,6 +20,7 @@ def setup_router(app):
     app.router.add_route('*', '/workerorder/', WorkerOrder)
     app.router.add_route('*', '/auth/mytest/',mytest)
     app.router.add_route("*", "/view/", mytestview)
+    
     ###用户管理###
     app.router.add_route("*", "/user/", Userinfo)
     app.router.add_route("*","/user/role/",role)
@@ -27,7 +28,6 @@ def setup_router(app):
     app.router.add_route("*", '/auth/token/', token)
     app.router.add_route('*', '/auth/login/', login)
     app.router.add_route('*', '/auth/logout/', logout)
-
 
     ##static file#####
     app.router.add_static("/static/", path="cmdb-ui/",name='static')
