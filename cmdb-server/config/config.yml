@@ -1,4 +1,4 @@
-http_server: localhost
+http_server: cmdb
 http_port: 9001
 log_path: logs
 mongo_host: localhost

@@ -21,7 +21,7 @@ DEFAULT_LOGGING = {
             'level': 'DEBUG',
             'handlers': ["default", "console"]
         },
-        'test': {
+        'http.access': {
             'level': 'DEBUG',
             'handlers': ["views", "console"]
         },

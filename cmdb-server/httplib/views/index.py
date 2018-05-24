@@ -6,10 +6,12 @@
 # @File    : index.py
 # @Software: PyCharm
 from aiohttp import web
+from httplib.base.webbase import *
 
-class Index(web.View):
+class Index(webbase):
     async def get(self):
-        return web.Response(text='index')
+        print('dddd')
+        return await self.response(data='index')
 
 
 

@@ -24,6 +24,20 @@ class token(webbase):
         else:
             return web.HTTPFound('/static/login.html')
 
+class Department(webbase):
+    async def get(self):
+        obj = UserGroup.objects.to_json()
+        return  web.Response(text=obj)
+
+    async def post(self):
+        obj = await self.request.json()
+        if UserGroup.objects.filter(uid=obj['uid']):
+            result = "group is existed"
+        else:
+            UserGroup(**obj).save()
+            result =  "add sucessful"
+        return  web.Response(text=result)
+
 
 class login(webbase):
     async def get(self):
@@ -76,10 +90,11 @@ class Userinfo(webbase):
 
     async def post(self):
         #data = self.check_session()
-        #admin=['admin','zhuxz','root']
         userinfo = await self.request.json()
-        obj = userinfo.pop('roleid')
-        userinfo['role']=UserRole.objects.filter(roleid=obj)
+        roleid = userinfo.pop('roleid')
+        groupid = userinfo.pop('groupid')
+        userinfo['role']=UserRole.objects.filter(roleid=roleid)
+        userinfo['group'] = UserGroup.objects.filter(uid=groupid)
         User(**userinfo).save()
         return web.Response(text="user add successful")
 
@@ -104,13 +119,13 @@ class role(webbase):
         return web.Response(text='add successfull')
 
     async  def get(self):
-        obj = UserRole.objects(roleid=101)
-        data=dict()
-        data['i']=obj[0]['roleid']
-        data['roleitem']=obj[0]['roleitem'][0]['peritem']
-        logging.info(data)
+        data = UserRole.objects.to_json()
+        #data=dict()
+        ##data['ioleid']=obj[0]['roleid']
+        #data['roleitem']=obj[0]['roleitem'][0]['peritem']
+        #logging.info(data)
 
-        return web.json_response(data)
+        return web.Response(text=data)
 
 
 

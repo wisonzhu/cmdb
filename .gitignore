@@ -1,0 +1,5 @@
+__pycache__
+*.logs
+*.yml
+cmdb-server/logs
+cmdb-server/httplib/__pycache__
