@@ -10,7 +10,6 @@ from httplib.base.webbase import *
 
 class Index(webbase):
     async def get(self):
-        print('dddd')
         return await self.response(data='index')
 
 

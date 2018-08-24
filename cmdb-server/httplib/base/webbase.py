@@ -12,7 +12,7 @@ from aiohttp_session import get_session
 import logging
 import json
 class webbase(web.View):
-
+    
     async def check_session(self):
             session = await get_session(self.request)
             logging.info(session)

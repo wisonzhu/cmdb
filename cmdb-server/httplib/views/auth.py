@@ -3,7 +3,7 @@
 # @Time    : 2018/5/17 下午11:32
 # @Author  : Aries
 # @Site    : 
-# @File    : auth.py
+# @File    : testauth.py
 # @Software: PyCharm
 from httplib.base.webbase import *
 from uuid import uuid4
@@ -60,25 +60,43 @@ class login(webbase):
                     userinfo = await self.request.post()
                     user = userinfo.get('username')
                     password = userinfo.get('password')
-                    
+
+            logging.info(user)
+            logging.info(password)
             if user and token:
                 ret = User.objects.filter(username = user).filter(token = token)
             if user and password:
                 ret = User.objects.filter(username = user).filter(password = password)
-
-            if ret:
-                session['username'] = user
-                data = 'login success'
-            else:
-                data = 'login fail'
-            return web.Response(text=data)
+            try:
+                if ret:
+                    session['username'] = user
+                    return web.HTTPFound('/front/cmdb.html')
+            except:
+                    data = 'login fail'
+                    return web.Response(text=data)
 
 
 class logout(webbase):
     async def get(self):
         session = await get_session(self.request)
         session.invalidate()
-        return web.Response(text='user is logout')
+        return web.HTTPFound('/front/login.html')
+        
+
+class myinfo(webbase):
+    async def get(self):
+        session = await get_session(self.request)
+        username = session['username'] if 'username' in session else None
+        try:
+            if username:
+                logging.info(username)
+                ret = User.objects.filter(username=username)
+                group=[(x.group)[0].name for x in ret ][0]
+            else:
+                group ="null"
+        except:
+                group="null"
+        return web.Response(text=f'{group}')
 
 
 class Userinfo(webbase):

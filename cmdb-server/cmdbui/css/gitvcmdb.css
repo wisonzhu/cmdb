@@ -1,0 +1,23 @@
+        td.details-control {
+            background: url('details_open.png') no-repeat center center;
+            cursor: pointer;
+        }
+        tr.shown td.details-control {
+            background: url('details_close.png') no-repeat center center;
+        }
+
+        html, body {
+            height: 100%;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .container-fluid {
+            height: 100%;
+            overflow-y: hidden;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            #margin-bottom: 10px;
+        }

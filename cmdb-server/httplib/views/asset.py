@@ -72,14 +72,17 @@ class Assets(web.View):
             result = "insert fail"
         return  web.Response(text = result)
 
-    async def put(self):
-        data = await self.request.json()
+class webupdate(webbase):
+    async def post(self):
+        obj = await self.request.post()
+        data =dict()
+        data['servernums'] = obj.get('servernums')
+        data['status'] = obj.get('status')
+        data['env'] = obj.get('env')
+        logging.info(data)
         obj = Asset.objects.filter(servernums=data['servernums'])
         if obj:
-            obj.update(systeminfo=data['systeminfo'])
-        else:
-            Assets(**data).save()
-
+            obj.update(**data)
         return web.Response(text='updated')
 
 class ProjectInfo(webbase):
@@ -93,6 +96,14 @@ class ProjectInfo(webbase):
         return web.Response(text="project create successful")
 
 
+
+class ajax(webbase):
+        async def get(self):
+            obj = json.loads(Asset.objects.to_json())
+            logger.info(obj)
+            data = dict()
+            data['data']= obj
+            return web.json_response(data)
 
 
 

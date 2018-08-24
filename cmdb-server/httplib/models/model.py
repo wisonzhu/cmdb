@@ -70,12 +70,13 @@ class Asset(Document):
     ownner = StringField(max_length=200,default="admin")
     createtime = DateTimeField(default=datetime.now)
     updatetime = DateTimeField(default=datetime.now)
-    ip  = StringField(max_length=50,null=True)
+    ip = StringField(max_length=50,null=True)
     systeminfo = DictField(null=True)
     env = StringField(max_length=200,default="prod")
     idcinfo = ReferenceField(Idc)
     idrac_ip = StringField(max_length=50,null=True)
     project = ReferenceField(Project,null=True)
+
 
 class UserPermisson(Document):
     typeid = IntField(required=True,unique=True)
@@ -91,6 +92,7 @@ class UserGroup(Document):
     uid = StringField(unique=True)
     name = StringField(max_length=120)
     datatime = DateTimeField(default=datetime.now)
+
 
 class User(Document):
     uid = StringField(primary_key=True)
@@ -118,10 +120,12 @@ class Ticket(Document):
     update_time = DateTimeField(default=datetime.now)
     create_time = DateTimeField(null=False)
 
+
 class Workflow(Document):
     name = StringField(unique=True)
     stage = ListField(required=True)
     tasks = ListField(DictField())
+
 
 class Order(Document):
     bid = StringField(unique=StringField)

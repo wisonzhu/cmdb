@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="viewport" charset="utf-8"  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>运维平台</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/front/css/gitvcmdb.css"/>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+<<<<<<< HEAD
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script> 
+    <script type="text/javascript" src="/front/js/gitvcmdb.js"></script>
+=======
+    <style type="text/css">
+    td.details-control {
+    background: url('details_open.png') no-repeat center center;
+    cursor: pointer;
+    }
+    tr.shown td.details-control {
+    background: url('details_close.png') no-repeat center center;
+    }
+
+    html, body {
+        height: 100%;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .container-fluid {
+        height: 100%;
+        overflow-y: hidden;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        #margin-bottom: 10px;
+     }
+   </style>
+>>>>>>> 7ceb439205dd00f83ec5964d2b207da8f0c89bbd
+</head>
+<body>
+    <nav class="navbar  navbar-inverse navbar-fixed-top" role="navigation">
+    	<div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">gitv</a>
+        </div>
+        <div>
+            <p class="navbar-text">用户登录</p>
+        </div>
+    	</div>
+    </nav>
+    <div class="container-fluid col-md-2  col-xs-2 well">
+        <ul class="list-group">
+           <li class="list-group-item active">dashboard</li>
+           <li class="list-group-item">资产管理</li>
+           <li class="list-group-item">变更管理</li>
+           <li class="list-group-item">配置管理</li>
+           <li class="list-group-item">日志管理</li>
+        </ul>
+    </div>
+    <div class="container col-md-10 col-xs-10" style="padding-top:5px;">
+    <div class="container" style="width:90%; ">
+        <table id="example" class="display " style="width:100%;">
+        <thead>
+            <tr>
+            <th></th>
+            <th>服务器SN</th>
+            <th>ip</th>
+            <th>主机名</th>
+            <th>服务器型号</th>
+            <th>环境</th>
+            <th>负责人</th>
+            <th>系统信息</th>
+            <th>IDRAC</th>
+            <th>内存(M)</th>
+            <th>CPU</th>
+            <th>状态</th>
+            </tr>
+        </thead>
+            <tbody>
+            </tbody>
+    </div>
+<<<<<<< HEAD
+    <div>
+        <p class="navbar-text navbar-right" style="padding-right: 40px;" id="myuserid">用户登录</p>
+    </div>
+	</div>
+</nav>
+<div class="container-fluid col-md-2  col-xs-2 well" >
+
+<ul class="list-group">
+  <li  id="dashboard" class="list-group-item active">dashboard</li>
+  <li id="asset" class="list-group-item">资产管理</li>
+  <li id="workflow" class="list-group-item">变更管理</li>
+  <li class="list-group-item">配置管理</li>
+  <li class="list-group-item">日志管理</li>
+</ul>
+</div>
+<div class="container col-md-10 col-xs-10" style="padding-top:5px;">
+<div class="container" id="mainbody" style="width:90%; ">
+    <table id="example" class="display " style="width:100%;">
+    <thead>
+    <tr>
+        <th></th>
+        <th>服务器SN</th>
+        <th>ip</th>
+        <th>主机名</th>
+        <th>服务器型号</th>
+        <th>环境</th>
+        <th>负责人</th>
+        <th>系统信息</th>
+        <th>IDRAC</th>
+        <th>内存(M)</th>
+        <th>CPU</th>
+        <th>状态</th>
+        <th>更新</th>
+    </tr>
+    </thead>
+    <tbody>
+	</tbody>
+	</table>
+       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					服务器信息更改
+				</h4>
+			</div>
+			<div class="modal-body">
+                 <label id="lbltipAddedComment">aaa</label>
+				 <input type="text" name="bookId" id="bookId" value="aaaa"/>
+                <input type="text" name="book1Id" id="bookId" value="aaaa"/>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary">确认</button>
+			</div>
+		</div><!-- /.modal-content -->
+	   </div>
+	</div>
+</div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+ $('#example').removeClass( 'display' ).addClass('table table-striped table-bordered');
+ $('ul>li').click(function (e) {
+
+        $('ul>li').removeClass('active');
+        $(this).addClass('active');
+ });
+
+$(document).ready(function() {
+    var table = $('#example').DataTable( {
+        ajax: {
+            url: '/asset1/',
+            dataSrc: 'data'
+        },
+        columns: [
+             {
+=======
+    </div>
+
+
+    <script type="text/javascript" charset="utf-8">
+
+    $(document).ready(function() {
+        var table = $('#example').DataTable( {
+            ajax: {
+            url: '/asset1/',
+            dataSrc: 'data'
+            },
+            columns: [
+                {
+                    "className":      'details-control',
+                    "orderable":      false,
+                    "data":           null,
+                    "defaultContent": ''
+                },
+                 {
+>>>>>>> 7ceb439205dd00f83ec5964d2b207da8f0c89bbd
+               "className":      'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ''
+<<<<<<< HEAD
+            },
+            { data: 'servernums' },
+            { 
+                data: 'systeminfo.main_ip',
+	            "defaultContent": 'none'	 
+             },
+            { data: 'systeminfo.hostname' },
+            { data: 'systeminfo.productname' },
+            { data: 'env' },
+            { data: 'ownner' },
+	        { data: 'systeminfo.osversion'},
+            { data: 'systeminfo.idrac_addr'},
+            { data: 'systeminfo.mem_total'},
+            { data: 'systeminfo.num_cpus'},
+            { data: 'status' },
+            {
+	            "orderable":  false,
+	            "className":      'update',
+                targets: -1,
+                data:  'servernums',
+                "render": function (data, type, row, meta) {
+                return data = '<button class="btn btn-info btn-sm" data-toggle="modal"  data-target="#myModal" data-id=' + data + '><i class="fa fa-pencil"></i>修改</button>'
+
+                }  
+	        }
+        ]
+    });
+=======
+                },
+                { data: 'servernums' },
+                { data: 'systeminfo.main_ip' },
+                { data: 'systeminfo.hostname'},
+                { data: 'systeminfo.productname' },
+                { data: 'env' },
+                { data: 'ownner' },
+                { data: 'systeminfo.osversion'},
+                { data: 'systeminfo.idrac_addr'},
+                { data: 'systeminfo.mem_total'},
+                { data: 'systeminfo.num_cpus'},
+                { data: 'status' },
+                {
+                    targets: -1,
+                    data: null,
+                    "defaultContent": '<button type="button" class="btn btn-primary">Primary</button>'
+                }
+
+            ]
+        });
+
+
+        function closeInput(elm) {
+            var value = $(elm).find('input').val();
+            $(elm).empty().text(value);
+>>>>>>> 7ceb439205dd00f83ec5964d2b207da8f0c89bbd
+
+            $(elm).bind("dblclick", function () {
+                newInput(elm);
+            });
+         }
+
+        function newInput(elm) {
+            $(elm).unbind('dblclick');
+
+<<<<<<< HEAD
+    function closeInput(elm) {
+        var value = $(elm).find('input').val();
+            $(elm).empty().text(value);
+
+            $(elm).bind("dblclick", function () {
+                newInput(elm);
+            });
+    }
+
+    function newInput(elm) {
+        $(elm).unbind('dblclick');
+            var value = $(elm).text();
+            $(elm).empty();
+            $("<input>")
+                .attr('type', 'text')
+                .val(value)
+                .blur(function () {
+                    closeInput(elm);
+                })
+                .appendTo($(elm))
+                .focus();
+           }
+
+    $('#example tbody').on( 'click', 'td.update', function () {
+ 	   var cell = table.cell( this );
+    	   var data = table.cell( this ).render( 'display' );
+    	   $(".modal-body #bookId").val(table.row($(this).closest('tr')).data().servernums);
+           $(".modal-body #book1Id").val(id)
+    //console.log( data );
+    //newInput(this);
+    //cell.data( cell.data() + 1 ).draw();
+    } );
+
+    function format ( d ) {
+        return '<table cellpadding="5" cellspacing="0" border="1" style="padding-left:180px;">'+
+            '<tr>'+
+                '<td>type: </td>'+ ' ' +
+                '<td>'+ d.systeminfo.virtual +'</td>'+
+            '</tr>' +
+	        '<tr>' +
+	            '<td> cpuarch: </td>' + ' ' + 
+	            '<td>'+ d.systeminfo.cpuarch +'</td>' +
+	        '</tr>' + 		
+            '</table>';
+    }
+
+
+    $('#example tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+
+        if ( row.child.isShown() ) {
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+=======
+             var value = $(elm).text();
+             $(elm).empty();
+
+             $("<input>")
+                 .attr('type', 'text')
+                 .val(value)
+                 .blur(function () {
+                     closeInput(elm);
+                 })
+                 .appendTo($(elm))
+                 .focus();
+        }
+
+        $('#exa11mple tbody').on( 'click', 'td', function () {
+            console.log( table.cell( this ).data() );
+            var cell = table.cell( this );
+            var cells = table.cells(this).nodes();
+            console.log(cells)
+             newInput(this);
+            cell.data( cell.data() + 1 ).draw();
+        } );
+
+        function format ( d ) {
+            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+            '<tr>'+
+                '<td>Full name:</td>'+
+                '<td>'+d.status+'</td>'+
+            '</tr>'
+            '</table>';
+>>>>>>> 7ceb439205dd00f83ec5964d2b207da8f0c89bbd
+        }
+
+<<<<<<< HEAD
+</script>
+</body>
+</html>
+=======
+        $('#example tbody').on('click', 'td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row( tr );
+
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child( format(row.data()) ).show();
+                tr.addClass('shown');
+               }
+        });
+    });
+
+    </script>
+</body>
+</html>
+>>>>>>> 7ceb439205dd00f83ec5964d2b207da8f0c89bbd

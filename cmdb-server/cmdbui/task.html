@@ -1,0 +1,43 @@
+<div class="container-fluid" style="margin-top:20px;">
+    <table id="example1" class="display" style="width:100%">
+    <thead>
+        <tr><th>工单号</th>
+        <th>类型</th>
+        <th>内容</th>
+        <th>状态</th>
+        </tr>
+    </thead>
+    <tbody>
+<div>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    
+		$('#example1').DataTable({
+                ajax: {
+                  url: '/workerorder/',
+                  dataSrc: 'data'
+                 },
+             columns: [ 
+                     {
+                       "data": "bid",
+                         "render": function(data, type, row, meta){
+                             return '<a href="/front/orderdetails.html?bid=' + data + '">' + data + '</a>';
+                        }
+                     },
+                 {
+                     data: 'type',
+                    "defaultContent": "<i>null</i>"
+                 },
+                 {
+                     data: 'content',
+                    "defaultContent": "<i>Null</i>"
+                 },
+                 {
+                     data: 'status',
+                     "defaultContent": "<i>Null</i>"
+                 }
+                ]
+                });
+});
+	$('#example1').removeClass( 'display' ).addClass('table table-striped table-bordered');
+</script>

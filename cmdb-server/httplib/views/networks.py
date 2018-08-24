@@ -19,4 +19,5 @@ class NetPool(web.View):
 
     async def post(self):
         data = await self.request.json()
-        return web.Response(data=data)
+        NetSegment(**data).save()
+        return web.Response(text='data')
